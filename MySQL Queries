@@ -1,0 +1,17 @@
+select database
+USE employees;
+
+Retrieve all uniqe salary values
+SELECT DISTINCT salary FROM salaries;
+
+Find the average salary, minimum and maximum salary 
+SELECT avg(Salary), min(Salary),max(Salary) FROM salaries;
+
+Find the number of male and female employees and order the count in descending order
+SELECT gender, COUNT(*) FROM EMPLOYEES GROUP BY gender ORDER BY COUNT(*) DESC;
+
+Find the names of the employees who work in more than one department 
+SELECT first_name, last_name, COUNT(*) AS no_of_depts FROM EMPLOYEES AS E, DEPT_EMP AS D WHERE E.emp_no = D.emp_no GROUP BY D.emp_no HAVING COUNT(*)>1;
+
+Display the number of hires based on the month 
+SELECT DATE_FORMAT(hire_date, '%M') AS month, COUNT(*) AS total_hires FROM employees GROUP BY month ORDER BY total_hires DESC;
